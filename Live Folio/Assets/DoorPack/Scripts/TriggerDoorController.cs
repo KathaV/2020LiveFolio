@@ -5,29 +5,26 @@ public class TriggerDoorController : MonoBehaviour
     [Header("Door Object")]
     [SerializeField] private Animator myDoor = null;
 
-    [Header("Trigger Type")]
-    [SerializeField] private bool openTrigger = false;
-    [SerializeField] private bool closeTrigger = false;
-
-    [Header("Animation Name")]
-    [SerializeField] private string doorOpen = "DoorOpen";
-    [SerializeField] private string doorClose = "DoorClose";
+   
+    [Header("Animation Conditions")]
+    [SerializeField] private string isOpen = "isOpen";
+   
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.tag =="Player")
         {
-            if (openTrigger)
-            {
-                myDoor.Play(doorOpen, 0, 0.0f);
-                gameObject.SetActive(false);
-            }
+           myDoor.SetBool(isOpen, true);
 
-            else if (closeTrigger)
-            {
-                myDoor.Play(doorClose, 0, 0.0f);
-                gameObject.SetActive(false);
-            }
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            
+           myDoor.SetBool(isOpen, false);
+            
         }
     }
 }
