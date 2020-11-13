@@ -14,6 +14,7 @@ public class MediaController : MonoBehaviour
     public float fadeAwaySpeed = 0.8f;
     public float fadeDelay = 1.0f;
     public VideoClip videoClip;
+    public GameObject spawnPoint;
     private bool isFading;
     private Task fader_t;
     private Task unfader_t;
@@ -23,11 +24,17 @@ public class MediaController : MonoBehaviour
     private GameObject canvas;
     private FirstPersonController movement;
     private bool hasPlayed = false;
+    private GameObject player;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         canvas = GameObject.FindWithTag("UI");
+        player = GameObject.FindWithTag("Player");
+        print("PLayer:" + player.name);
+
+        //PrepareVideo();
 
     }
 
@@ -58,7 +65,14 @@ public class MediaController : MonoBehaviour
             long playerFrameCount = Convert.ToInt64(vidPlyr.GetComponent<VideoPlayer>().frameCount);
             if (isStreaming && playerCurrentFrame == 100)//playerFrameCount)
             {
-
+                if (spawnPoint != null)
+                {
+                    CharacterController controller = player.GetComponent<CharacterController>();
+                    controller.enabled = false;
+                    player.transform.position = spawnPoint.transform.position;
+                    controller.enabled = true;
+                }
+                
                 StopVideo();
                 movement.enabled = true;
                 
@@ -76,18 +90,28 @@ public class MediaController : MonoBehaviour
         //vidPlyr.enabled = false;
         Task fader_t = new Task(FadeInRawImage(fadeSpeed, img, false));
     }
-    
-    void PlayVideo(GameObject canvas)
+    void PrepareVideo()
     {
 
         vidPlyr = canvas.GetComponentInChildren<VideoPlayer>();
-        vidPlyr.enabled=true;
+
         vidPlyr.clip = videoClip;
+        vidPlyr.Prepare();
+    }
+    void PlayVideo(GameObject canvas)
+    {
+        vidPlyr = canvas.GetComponentInChildren<VideoPlayer>();
+
+        vidPlyr.enabled = true;
+        vidPlyr.clip = videoClip;
+        vidPlyr.Prepare();
+
         vidPlyr.Play();
         img = canvas.GetComponentInChildren<RawImage>();
         img.enabled = true;
+        
         var fader_t = new Task( FadeInRawImage(fadeAwaySpeed, img));
-        Cursor.visible = true;
+        //Cursor.visible = true;
     }
 
     //https://turbofuture.com/graphic-design-video/How-to-Fade-to-Black-in-Unity#:~:text=Method%201%3A%20Attach%20To%20Camera&text=In%20Unity%2C%20go%20to%20Assets,Voila.
@@ -99,6 +123,8 @@ public class MediaController : MonoBehaviour
             fader_t = new Task(FadeToBlack(fadeSpeed, fadeDelay));
             isFading = true;
             movement = other.gameObject.GetComponent<FirstPersonController>();
+            //player = other.gameObject;
+            
         }
 
         
