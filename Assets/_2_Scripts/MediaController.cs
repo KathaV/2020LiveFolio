@@ -26,7 +26,9 @@ public class MediaController : MonoBehaviour
     private bool hasPlayed = false;
     private GameObject player;
     private long pauseFrame;
-    
+    private GameObject pausePanel;
+    private GameObject restartPanel;
+
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +36,8 @@ public class MediaController : MonoBehaviour
         canvas = GameObject.FindWithTag("UI");
         player = GameObject.FindWithTag("Player");
         print("PLayer:" + player.name);
+        pausePanel = canvas.transform.Find("Pause Panel").gameObject;
+        restartPanel = canvas.transform.Find("Restart Panel").gameObject;
 
         //PrepareVideo();
 
@@ -80,16 +84,19 @@ public class MediaController : MonoBehaviour
             if (Input.GetKeyDown("space") && playerCurrentFrame>pauseFrame)
             {
                 print("pausing");
+                pausePanel.SetActive(true);
                 vidPlyr.Pause();
                 pauseFrame = playerCurrentFrame;
             }
             else if (Input.GetKeyDown("space") && playerCurrentFrame == pauseFrame)
             {
+                pausePanel.SetActive(false);
                 print("playing");
                 vidPlyr.Play();
             }
             else if (Input.GetKeyDown("r"))
             {
+                StartCoroutine(ShowPanel(1f, restartPanel));
                 RestartVideo();
             }
             if (playerCurrentFrame ==playerFrameCount)
@@ -212,20 +219,12 @@ public class MediaController : MonoBehaviour
         }
     }
 
-/*    public IEnumerator FadeFromBlack(float fadespeed, float fadeDelay, bool fade = true)
+    public IEnumerator ShowPanel(float duration, GameObject panel)
     {
-        Color objColor = blackoutPanel.GetComponent<Image>().color;
-        float fadeAmount;
-        yield return new WaitForSeconds(fadeDelay);
-        
-        while (objColor.a > 0)
-        {
-            fadeAmount = objColor.a - (fadespeed * Time.deltaTime);
-            objColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
-            blackoutPanel.GetComponent<Image>().color = objColor;
-            yield return null;
-        }
-    }*/
+        panel.SetActive(true);
+        yield return new WaitForSeconds(duration);
+        panel.SetActive(false);
+    }
     public IEnumerator FadeInRawImage(float fadespeed, RawImage img, bool fade = true)
     {
         Color objColor = img.color;
