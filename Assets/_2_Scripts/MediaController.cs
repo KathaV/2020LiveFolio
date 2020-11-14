@@ -61,9 +61,21 @@ public class MediaController : MonoBehaviour
         }
         if (vidPlyr != null)
         {
+            if (isStreaming && Input.GetKey("e"))
+            {
+                if (spawnPoint != null)
+                {
+                    CharacterController controller = player.GetComponent<CharacterController>();
+                    controller.enabled = false;
+                    player.transform.position = spawnPoint.transform.position;
+                    controller.enabled = true;
+                }
+
+                StopVideo();
+            }
             long playerCurrentFrame = vidPlyr.GetComponent<VideoPlayer>().frame;
             long playerFrameCount = Convert.ToInt64(vidPlyr.GetComponent<VideoPlayer>().frameCount);
-            if (isStreaming && playerCurrentFrame == 100)//playerFrameCount)
+            if (isStreaming && playerCurrentFrame ==playerFrameCount)
             {
                 if (spawnPoint != null)
                 {
@@ -74,10 +86,6 @@ public class MediaController : MonoBehaviour
                 }
                 
                 StopVideo();
-                movement.enabled = true;
-                
-                Task fader_t = new Task(FadeToBlack(fadeSpeed, fadeDelay+1/fadeAwaySpeed, false));
-                isStreaming = false;
             }
             hasPlayed = true;
         }
@@ -89,6 +97,11 @@ public class MediaController : MonoBehaviour
         vidPlyr.Stop();
         //vidPlyr.enabled = false;
         Task fader_t = new Task(FadeInRawImage(fadeSpeed, img, false));
+
+        movement.enabled = true;
+
+        Task fader2_t = new Task(FadeToBlack(fadeSpeed, fadeDelay + 1 / fadeAwaySpeed, false));
+        isStreaming = false;
     }
     void PrepareVideo()
     {
