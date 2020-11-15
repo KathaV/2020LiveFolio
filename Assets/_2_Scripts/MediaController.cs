@@ -143,6 +143,7 @@ public class MediaController : MonoBehaviour
         Task fader2_t = new Task(FadeToBlack(fadeSpeed, fadeDelay + 1 / fadeAwaySpeed, false));
         isStreaming = false;
         hasPlayed = true;
+        vidPlyr.enabled = false;
     }
     void PrepareVideo()
     {
