@@ -15,6 +15,8 @@ public class MediaController : MonoBehaviour
     public float fadeDelay = 1.0f;
     public VideoClip videoClip;
     public GameObject spawnPoint;
+    public List<GameObject> otherUI;
+    public GameObject instructions;
     private bool isFading;
     private Task fader_t;
     private Task unfader_t;
@@ -28,7 +30,8 @@ public class MediaController : MonoBehaviour
     private long pauseFrame;
     private GameObject pausePanel;
     private GameObject restartPanel;
-
+    public float InstructionsDuration = 5f;
+    private float timer;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +41,9 @@ public class MediaController : MonoBehaviour
         print("PLayer:" + player.name);
         pausePanel = canvas.transform.Find("Pause Panel").gameObject;
         restartPanel = canvas.transform.Find("Restart Panel").gameObject;
-
+        instructions.SetActive(false);
         //PrepareVideo();
+         timer = InstructionsDuration;
 
     }
 
@@ -49,18 +53,30 @@ public class MediaController : MonoBehaviour
         if (!hasPlayed && fader_t != null && !fader_t.Running && !isStreaming )
         {
             print("fading stopped!");
+
             /* vidPlyr = blackoutPanel.GetComponentInChildren<VideoPlayer>();
              vidPlyr.Play();*/
             //vidPlyr.Pause();
 
             //unfader_t = new Task(FadeFromBlack(fadeAwaySpeed));
-
-            isStreaming = true;
-            print("videoPlaying!");
             
-            PlayVideo(canvas);
-            Assert.IsNotNull(movement);
-            movement.enabled = false;
+
+            ToggleOtherUI(false);
+            instructions.SetActive(true);
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+            }
+            else
+            {
+                print("videoPlaying!");
+                instructions.SetActive(false);
+                isStreaming = true;
+                PlayVideo(canvas);
+                Assert.IsNotNull(movement);
+                movement.enabled = false;
+            }
+            
 
 
         }
@@ -129,6 +145,14 @@ public class MediaController : MonoBehaviour
     }
 
 
+    void ToggleOtherUI(bool isActive)
+    {
+        foreach (GameObject ui in otherUI)
+        {
+            ui.SetActive(isActive);
+        }
+    }
+
     void StopVideo()
     {
 
@@ -144,6 +168,8 @@ public class MediaController : MonoBehaviour
         isStreaming = false;
         hasPlayed = true;
         vidPlyr.enabled = false;
+        ToggleOtherUI(true);
+        timer = InstructionsDuration;
     }
     void PrepareVideo()
     {
@@ -159,6 +185,7 @@ public class MediaController : MonoBehaviour
     {
         vidPlyr = canvas.GetComponentInChildren<VideoPlayer>();
 
+        vidPlyr.loopPointReached += EndReached;
         vidPlyr.enabled = true;
         vidPlyr.clip = videoClip;
         vidPlyr.Prepare();
@@ -193,6 +220,8 @@ public class MediaController : MonoBehaviour
         
     }
 
+
+    
     public IEnumerator FadeToBlack(float fadespeed, float fadeDelay, bool fade = true)
     {
         Color objColor = blackoutPanel.GetComponent<Image>().color;
