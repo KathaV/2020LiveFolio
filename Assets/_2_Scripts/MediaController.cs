@@ -166,9 +166,10 @@ public class MediaController : MonoBehaviour
 
         Task fader2_t = new Task(FadeToBlack(fadeSpeed, fadeDelay + 1 / fadeAwaySpeed, false));
         isStreaming = false;
+
+        ToggleOtherUI(true);
         hasPlayed = true;
         vidPlyr.enabled = false;
-        ToggleOtherUI(true);
         timer = InstructionsDuration;
     }
     void PrepareVideo()
@@ -192,6 +193,7 @@ public class MediaController : MonoBehaviour
         vidPlyr.frame = 0;
         vidPlyr.Play();
         img = canvas.GetComponentInChildren<RawImage>();
+        img.enabled = false;
         //img = new RawImage();
         img.enabled = true;
        // img.texture = 
