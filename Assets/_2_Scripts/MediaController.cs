@@ -32,10 +32,12 @@ public class MediaController : MonoBehaviour
     private GameObject restartPanel;
     public float InstructionsDuration = 5f;
     private float timer;
+    private bool justEntered;
 
     // Start is called before the first frame update
     void Start()
     {
+        justEntered = false;
         canvas = GameObject.FindWithTag("UI");
         player = GameObject.FindWithTag("Player");
         print("PLayer:" + player.name);
@@ -49,7 +51,7 @@ public class MediaController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!hasPlayed && fader_t != null && !fader_t.Running && !isStreaming )
+        if (justEntered && fader_t != null && !fader_t.Running && !isStreaming )
         {
             print("fading stopped!");
 
@@ -58,7 +60,7 @@ public class MediaController : MonoBehaviour
             //vidPlyr.Pause();
 
             //unfader_t = new Task(FadeFromBlack(fadeAwaySpeed));
-            
+            isFading = false;
 
             ToggleOtherUI(false);
             instructions.SetActive(true);
@@ -132,6 +134,8 @@ public class MediaController : MonoBehaviour
 
     }
 
+    
+
     void RestartVideo()
     {
         vidPlyr.loopPointReached += EndReached;
@@ -159,17 +163,20 @@ public class MediaController : MonoBehaviour
         vidPlyr.Stop();
 
         //vidPlyr.enabled = false;
-        Task fader_t = new Task(FadeInRawImage(fadeSpeed, img, false));
+        new Task(FadeInRawImage(fadeSpeed, img, false));
 
         movement.enabled = true;
 
-        Task fader2_t = new Task(FadeToBlack(fadeSpeed, fadeDelay + 1 / fadeAwaySpeed, false));
+        Task fader2_t = new Task(FadeToBlack(fadeSpeed, 0, false));
         isStreaming = false;
 
         ToggleOtherUI(true);
         hasPlayed = true;
         vidPlyr.enabled = false;
         timer = InstructionsDuration;
+        vidPlyr.targetTexture.Release();
+        justEntered = false;
+        fader_t = null;
     }
     void PrepareVideo()
     {
@@ -192,7 +199,7 @@ public class MediaController : MonoBehaviour
         vidPlyr.frame = 0;
         vidPlyr.Play();
         img = canvas.GetComponentInChildren<RawImage>();
-        img.enabled = false;
+        
         //img = new RawImage();
         img.enabled = true;
        // img.texture = 
@@ -221,6 +228,7 @@ public class MediaController : MonoBehaviour
             //player = other.gameObject;
             
         }
+        justEntered = true;
 
         
     }
@@ -234,8 +242,10 @@ public class MediaController : MonoBehaviour
         yield return new WaitForSeconds(fadeDelay);
         if (fade)
         {
+            print("fading");
             while (objColor.a < 1)
             {
+                
                 fadeAmount = objColor.a + (fadespeed * Time.deltaTime);
                 objColor = new Color(objColor.r, objColor.g, objColor.b, fadeAmount);
                 blackoutPanel.GetComponent<Image>().color = objColor;
