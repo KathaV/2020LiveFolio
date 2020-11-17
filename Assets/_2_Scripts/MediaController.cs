@@ -43,8 +43,7 @@ public class MediaController : MonoBehaviour
         restartPanel = canvas.transform.Find("Restart Panel").gameObject;
         instructions.SetActive(false);
         //PrepareVideo();
-         timer = InstructionsDuration;
-
+        timer = InstructionsDuration;
     }
 
     // Update is called once per frame
@@ -200,6 +199,10 @@ public class MediaController : MonoBehaviour
         
         var fader_t = new Task( FadeInRawImage(fadeAwaySpeed, img));
         //Cursor.visible = true;
+    }
+    public bool hasBeenPlayed()
+    {
+        return hasPlayed;
     }
     void EndReached(VideoPlayer vp)
     {
