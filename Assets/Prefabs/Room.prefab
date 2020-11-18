@@ -425,7 +425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6236257717164756859
 Transform:
   m_ObjectHideFlags: 0
@@ -783,7 +783,7 @@ MonoBehaviour:
   fadeAwaySpeed: 0.5
   fadeDelay: 1
   videoClip: {fileID: 32900000, guid: 2f02007bccdfb18408236331c14ffa35, type: 3}
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 6236257717164756858}
   otherUI: []
   instructions: {fileID: 0}
   InstructionsDuration: 5
@@ -1088,7 +1088,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4308170994332864, guid: a16eae0af83edd24a9e7bdf1d02099e3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.86
+      value: 0.79
       objectReference: {fileID: 0}
     - target: {fileID: 4308170994332864, guid: a16eae0af83edd24a9e7bdf1d02099e3, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1143,6 +1143,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 23294785076291218, guid: a16eae0af83edd24a9e7bdf1d02099e3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e2510ac76f21ae845a9d0433894abbff, type: 2}
+    - target: {fileID: 23420316486415204, guid: a16eae0af83edd24a9e7bdf1d02099e3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 15ee18a418e72d1418815052445c3c11, type: 2}
     - target: {fileID: 1504097330298912489, guid: a16eae0af83edd24a9e7bdf1d02099e3,
         type: 3}
       propertyPath: m_Size.z

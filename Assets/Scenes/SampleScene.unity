@@ -1430,7 +1430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &283704388
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1453,10 +1453,10 @@ RectTransform:
   m_Father: {fileID: 325268539}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.25875002, y: 0.22881114}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 17, y: -18}
-  m_SizeDelta: {x: -86.158875, y: -120.69757}
+  m_AnchoredPosition: {x: -86.5, y: -69.5}
+  m_SizeDelta: {x: 120.841125, y: -17.69757}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &316816599
 GameObject:
@@ -2479,7 +2479,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 510139985}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0.7071068, w: 0}
-  m_LocalPosition: {x: 24.4845, y: -8.370001, z: 0.7}
+  m_LocalPosition: {x: 24.1, y: -8.370001, z: 0.7}
   m_LocalScale: {x: 4.551907, y: 1, z: 3.555713}
   m_Children: []
   m_Father: {fileID: 1905279532}
@@ -5962,7 +5962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1140559600
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6233,7 +6233,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -2.9000244, y: 9.100006}
+  m_AnchoredPosition: {x: -2.9000244, y: 9.100037}
   m_SizeDelta: {x: -429.0228, y: -106.47516}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1147515400
@@ -8188,7 +8188,7 @@ PrefabInstance:
     - target: {fileID: 6236257717556186615, guid: 69359263395dc344d846b73e27602b96,
         type: 3}
       propertyPath: InstructionsDuration
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6236257717960086293, guid: 69359263395dc344d846b73e27602b96,
         type: 3}
@@ -9251,7 +9251,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1607846869
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9780,7 +9780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1670676542
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11023,7 +11023,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: b5198f8af2f2fb74d81edc8ca9d255ce, type: 2}
+      objectReference: {fileID: 2100000, guid: 888daeabd7af8694783c9a32a9ca19d2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3681543e5b0f59742b73073cb379cdc6, type: 3}
 --- !u!4 &1848135863 stripped
@@ -11193,7 +11193,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -35.855896, y: -28.04309}
+  m_SizeDelta: {x: -61.559326, y: -65.84253}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1894159407
 MonoBehaviour:
@@ -11214,7 +11214,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Please press Tab key to access/close the menu, and '
+  m_text: ' Please press Tab key to access/close the menu, and lkasjdlkajslkdjlakjsldjalskjdlakjsdlaksjdlakjslkdjalksjdlajsdlak'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11242,8 +11242,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11252,14 +11252,14 @@ MonoBehaviour:
   m_textAlignment: 257
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 20
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 52
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -11283,12 +11283,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1894159407}
-    characterCount: 51
+    characterCount: 116
     spriteCount: 0
-    spaceCount: 9
-    wordCount: 10
+    spaceCount: 10
+    wordCount: 12
     linkCount: 0
-    lineCount: 1
+    lineCount: 2
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -11332,7 +11332,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1898080213
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11350,8 +11350,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -147}
-  m_SizeDelta: {x: -53.823425, y: -331.873}
+  m_AnchoredPosition: {x: 0, y: -144.4}
+  m_SizeDelta: {x: -53.823425, y: -326.68237}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1898080214
 MonoBehaviour:
@@ -11365,10 +11365,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c8bfac2485b9c94a8b6156b6568d152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeBetweenMsgs: 6
+  timeBetweenMsgs: 10
   messages:
-  - To access the menu and instructinos again, please press tab at any point in the
-    game, and tab again to close...
+  - To access the menu and instructions again, please press Tab at any point in the
+    game, and Tab again to close...
 --- !u!114 &1898080215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11382,7 +11382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.57254905}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.79607844}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -13875,7 +13875,7 @@ MonoBehaviour:
   fadeAwaySpeed: 0.5
   fadeDelay: 1
   videoClip: {fileID: 32900000, guid: cfc4ee72110adec43bf95e0378d89130, type: 3}
-  spawnPoint: {fileID: 0}
+  spawnPoint: {fileID: 6236257717086625531}
   otherUI:
   - {fileID: 1565776556}
   - {fileID: 1898080212}
@@ -14191,7 +14191,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3b0d2ceccf5d1804fb726d141e80fb44, type: 2}
+  - {fileID: 2100000, guid: 15ee18a418e72d1418815052445c3c11, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14230,7 +14230,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 635a90e379cbaa348983459195c824dd, type: 2}
+  - {fileID: 2100000, guid: e2510ac76f21ae845a9d0433894abbff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
