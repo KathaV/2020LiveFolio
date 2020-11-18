@@ -33,6 +33,8 @@ public class MediaController : MonoBehaviour
     public float InstructionsDuration = 5f;
     private float timer;
     private bool justEntered;
+    public static bool instructionsShown;
+    public static bool mediaStreaming;
 
     // Start is called before the first frame update
     void Start()
@@ -40,12 +42,15 @@ public class MediaController : MonoBehaviour
         justEntered = false;
         canvas = GameObject.FindWithTag("UI");
         player = GameObject.FindWithTag("Player");
-        print("PLayer:" + player.name);
+        print("Player:" + player.name);
         pausePanel = canvas.transform.Find("Pause Panel").gameObject;
         restartPanel = canvas.transform.Find("Restart Panel").gameObject;
         instructions.SetActive(false);
         //PrepareVideo();
         timer = InstructionsDuration;
+        MediaController.instructionsShown = false;
+        MediaController.mediaStreaming = false;
+
     }
 
     // Update is called once per frame
@@ -63,16 +68,31 @@ public class MediaController : MonoBehaviour
             isFading = false;
 
             ToggleOtherUI(false);
-            instructions.SetActive(true);
-            if (timer > 0)
+            if (!MediaController.instructionsShown)
             {
-                timer -= Time.deltaTime;
+
+                instructions.SetActive(true);
+                print("time: "+timer);
+                if (timer > 0)
+                {
+                    
+                    timer -= Time.deltaTime;
+                }
+                else
+                {
+
+                    MediaController.instructionsShown = true;
+                }
+                
             }
+            
             else
             {
+
                 print("videoPlaying!");
                 instructions.SetActive(false);
                 isStreaming = true;
+                MediaController.mediaStreaming = true;
                 PlayVideo(canvas);
                 Assert.IsNotNull(movement);
                 movement.enabled = false;
@@ -169,6 +189,7 @@ public class MediaController : MonoBehaviour
 
         Task fader2_t = new Task(FadeToBlack(fadeSpeed, 0, false));
         isStreaming = false;
+        MediaController.mediaStreaming = false;
 
         ToggleOtherUI(true);
         hasPlayed = true;

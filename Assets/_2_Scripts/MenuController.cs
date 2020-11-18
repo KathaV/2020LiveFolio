@@ -57,4 +57,8 @@ public class MenuController : MonoBehaviour
         }
         Cursor.visible = menuOn;
     }
+    public bool isOn()
+    {
+        return menuOn;
+    }
 }
