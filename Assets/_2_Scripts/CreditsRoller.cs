@@ -13,21 +13,26 @@ public class CreditsRoller : MonoBehaviour
     private Task fader_t;
     public GameObject credits;
     private bool creditsHasPlayed;
+    private GameObject player;
+    public GameObject spawnPoint;
+    
     // Start is called before the first frame update
     void Start()
     {
         animators = GameObject.FindGameObjectsWithTag("Animator");
         creditsHasPlayed = false;
+        player = GameObject.FindWithTag("Player");
     }
 
 
     // Update is called once per frame
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
 
         bool playCredits = true;
         MediaController media;
-        if (!creditsHasPlayed) {
+        if (other.gameObject.tag =="Player") {
+            
             foreach (GameObject animator in animators)
             {
                 media = animator.GetComponent<MediaController>();
@@ -65,8 +70,19 @@ public class CreditsRoller : MonoBehaviour
     public void stopCredits()
     {
         Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.visible = false; 
+        //respawn
+        CharacterController controller = player.GetComponent<CharacterController>();
+        
+        controller.enabled = false;
+        player.transform.position = spawnPoint.transform.position;
+        player.transform.eulerAngles = new Vector3(0, -90, 0);
+        controller.enabled = true;
+        print("player rot:" + player.transform.rotation);
+
+
         new Task(FadeToBlack(fadeSpeed, fadeDelay, false));
+        
 
     }
     public IEnumerator FadeToBlack(float fadespeed, float fadeDelay, bool fade = true)
