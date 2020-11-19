@@ -67,6 +67,7 @@ public class MediaController : MonoBehaviour
             //unfader_t = new Task(FadeFromBlack(fadeAwaySpeed));
             isFading = false;
 
+            MediaController.mediaStreaming = true;
             ToggleOtherUI(false);
             if (!MediaController.instructionsShown)
             {
@@ -92,7 +93,6 @@ public class MediaController : MonoBehaviour
                 print("videoPlaying!");
                 instructions.SetActive(false);
                 isStreaming = true;
-                MediaController.mediaStreaming = true;
                 PlayVideo(canvas);
                 Assert.IsNotNull(movement);
                 movement.enabled = false;

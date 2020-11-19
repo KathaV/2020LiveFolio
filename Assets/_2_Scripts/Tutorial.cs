@@ -32,7 +32,10 @@ public class Tutorial : MonoBehaviour
         {
 
             msgBox.SetActive(false);
+            print("not active");
         }
+            
+
         if (messages.Count > 0 && curr < messages.Count)
         {
             print("setting boxes...");
@@ -42,7 +45,7 @@ public class Tutorial : MonoBehaviour
             string msg = messages[curr];
             msgPrompt.GetComponent<TextMeshProUGUI>().text = msg;
             countdown -= Time.deltaTime;
-            if (countdown <= 0 || Input.GetKeyDown("e"))
+            if (countdown <= 0)
             {
                 countdown = timeBetweenMsgs;
                 curr++;
@@ -61,6 +64,11 @@ public class Tutorial : MonoBehaviour
     public bool isBroadcasting()
     {
         return isActive;
+    }
+
+    public void Toggle(bool isOn)
+    {
+        isActive = isOn;
     }
 
 }

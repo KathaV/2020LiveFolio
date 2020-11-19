@@ -7,14 +7,11 @@ public class GameController : MonoBehaviour
     private GameObject[] animators;
     private GameObject mainMenu;
     public GameObject msgPrompter;
-    private bool instructionsShown;
-    
     // Start is called before the first frame update
     void Start()
     {
         animators = GameObject.FindGameObjectsWithTag("Animator");
         mainMenu = GameObject.FindWithTag("Menu");
-        instructionsShown = false;
         
     }
 
@@ -40,16 +37,23 @@ public class GameController : MonoBehaviour
         //toggle message prompter off when menu is on screen.
         Tutorial msgScript = msgPrompter.GetComponent<Tutorial>();
         if (mainMenu.GetComponent<MenuController>().isOn() && msgScript.isBroadcasting()){
+            print("not broadcasting");
             msgPrompter.SetActive(false);
         }
         else if (!mainMenu.GetComponent<MenuController>().isOn() && msgScript.isBroadcasting() && !MediaController.mediaStreaming)
         {
+            print("broadcasting and not streaming");
             msgPrompter.SetActive(true);
         }
+        else
+        {
+            print("menu: " + mainMenu.GetComponent<MenuController>().isOn());
+            print("braodcasting: " + msgScript.isBroadcasting());
+            print("streaming: " + MediaController.mediaStreaming);
 
-        
-
+        }
     }
+
     void RemoveInstructions()
     {
         print("removing instructions");
