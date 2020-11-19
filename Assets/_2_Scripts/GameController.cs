@@ -44,14 +44,14 @@ public class GameController : MonoBehaviour
         {
             print("broadcasting and not streaming");
             msgPrompter.SetActive(true);
-        }
+        }/*
         else
         {
             print("menu: " + mainMenu.GetComponent<MenuController>().isOn());
             print("braodcasting: " + msgScript.isBroadcasting());
             print("streaming: " + MediaController.mediaStreaming);
 
-        }
+        }*/
     }
 
     void RemoveInstructions()

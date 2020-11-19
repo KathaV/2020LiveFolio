@@ -36,6 +36,8 @@ public class MediaController : MonoBehaviour
     public static bool instructionsShown;
     public static bool mediaStreaming;
 
+    private long playerFrameCount;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -107,17 +109,16 @@ public class MediaController : MonoBehaviour
             {
                 if (spawnPoint != null)
                 {
-                    CharacterController controller = player.GetComponent<CharacterController>();
-                    controller.enabled = false;
-                    player.transform.position = spawnPoint.transform.position;
-                    controller.enabled = true;
+                    Respawn();
                 }
 
                 StopVideo();
             }
 
             long playerCurrentFrame = vidPlyr.GetComponent<VideoPlayer>().frame;
-            long playerFrameCount = Convert.ToInt64(vidPlyr.GetComponent<VideoPlayer>().frameCount);
+            print("playerCurrentFram: "+ playerCurrentFrame);
+            print("playerFrameCount: " + playerFrameCount);
+
             if (Input.GetKeyDown("space") && playerCurrentFrame>pauseFrame)
             {
                 print("pausing");
@@ -131,20 +132,16 @@ public class MediaController : MonoBehaviour
                 print("playing");
                 vidPlyr.Play();
             }
-            else if (Input.GetKeyDown("r"))
+            /*else if (Input.GetKeyDown("r"))
             {
                 StartCoroutine(ShowPanel(1f, restartPanel));
                 RestartVideo();
-            }
-            if (playerCurrentFrame ==playerFrameCount)
+            }*/
+            if (playerCurrentFrame ==playerFrameCount-1)
             {
                 if (spawnPoint != null)
                 {
-                    CharacterController controller = player.GetComponent<CharacterController>();
-                    controller.enabled = false;
-                    player.transform.position = spawnPoint.transform.position;
-                    controller.enabled = true;
-                    player.transform.Rotate(0.0f, -90.0f, 0.0f, Space.World);
+                    Respawn();
                 }
                 
                 StopVideo();
@@ -168,6 +165,17 @@ public class MediaController : MonoBehaviour
     }
 
 
+    void Respawn()
+    {
+        CharacterController controller = player.GetComponent<CharacterController>();
+        controller.enabled = false;
+        player.transform.position = spawnPoint.transform.position;
+        player.transform.eulerAngles = new Vector3(0, -90, 0);
+
+        controller.enabled = true;
+        print("player rot:" + player.transform.rotation);
+
+    }
     void ToggleOtherUI(bool isActive)
     {
         foreach (GameObject ui in otherUI)
@@ -183,11 +191,11 @@ public class MediaController : MonoBehaviour
         vidPlyr.Stop();
 
         //vidPlyr.enabled = false;
-        new Task(FadeInRawImage(fadeSpeed, img, false));
+        new Task(FadeInRawImage(fadeAwaySpeed, img, false));
 
         movement.enabled = true;
 
-        Task fader2_t = new Task(FadeToBlack(fadeSpeed, 0, false));
+        Task fader2_t = new Task(FadeToBlack(fadeAwaySpeed, fadeDelay+1/fadeAwaySpeed, false));
         isStreaming = false;
         MediaController.mediaStreaming = false;
 
@@ -212,13 +220,15 @@ public class MediaController : MonoBehaviour
     void PlayVideo(GameObject canvas)
     {
         vidPlyr = canvas.GetComponentInChildren<VideoPlayer>();
-
+        //vidPlyr.url = System.IO.Path.Combine(Application.streamingAssetsPath, videoClip.name);
         vidPlyr.loopPointReached += EndReached;
         vidPlyr.enabled = true;
         vidPlyr.clip = videoClip;
         vidPlyr.Prepare();
         vidPlyr.frame = 0;
         vidPlyr.Play();
+
+        playerFrameCount = Convert.ToInt64(vidPlyr.GetComponent<VideoPlayer>().frameCount);
         img = canvas.GetComponentInChildren<RawImage>();
         
         //img = new RawImage();
