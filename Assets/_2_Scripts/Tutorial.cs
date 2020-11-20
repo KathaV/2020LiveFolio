@@ -14,6 +14,7 @@ public class Tutorial : MonoBehaviour
     private float countdown;
     private int curr;
     private bool isActive;
+    private bool isPlaying;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,13 +23,14 @@ public class Tutorial : MonoBehaviour
         countdown = timeBetweenMsgs;
         curr = 0;
         isActive = false;
+        isPlaying = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         print("count" + messages.Count + " curr: " + curr);
-        if (!isActive)
+        if (isPlaying&& !isActive)
         {
 
             msgBox.SetActive(false);
@@ -36,7 +38,7 @@ public class Tutorial : MonoBehaviour
         }
             
 
-        if (messages.Count > 0 && curr < messages.Count)
+        if (isPlaying && messages.Count > 0 && curr < messages.Count)
         {
             print("setting boxes...");
             msgBox.SetActive(true);
@@ -61,6 +63,15 @@ public class Tutorial : MonoBehaviour
         }
     }
 
+    public void Pause()
+    {
+        isPlaying = false;
+    }
+    public void Play()
+    {
+        isPlaying = true;
+    }
+
     public bool isBroadcasting()
     {
         return isActive;
@@ -70,5 +81,6 @@ public class Tutorial : MonoBehaviour
     {
         isActive = isOn;
     }
-
+    
+    
 }

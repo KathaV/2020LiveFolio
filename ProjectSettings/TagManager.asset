@@ -7,6 +7,9 @@ TagManager:
   - UI
   - Menu
   - Animator
+  - Credits
+  - Room
+  - Unlocked
   layers:
   - Default
   - TransparentFX
