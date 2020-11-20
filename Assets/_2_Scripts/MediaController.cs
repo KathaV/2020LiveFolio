@@ -36,6 +36,7 @@ public class MediaController : MonoBehaviour
     public static bool instructionsShown;
     public static bool mediaStreaming;
 
+
     private long playerFrameCount;
 
     // Start is called before the first frame update
@@ -50,7 +51,7 @@ public class MediaController : MonoBehaviour
         instructions.SetActive(false);
         //PrepareVideo();
         timer = InstructionsDuration;
-        MediaController.instructionsShown = false;
+        MediaController.instructionsShown = true;
         MediaController.mediaStreaming = false;
 
     }
@@ -60,7 +61,7 @@ public class MediaController : MonoBehaviour
     {
         if (justEntered && fader_t != null && !fader_t.Running && !isStreaming )
         {
-            print("fading stopped!");
+            //print("fading stopped!");
 
             /* vidPlyr = blackoutPanel.GetComponentInChildren<VideoPlayer>();
              vidPlyr.Play();*/
@@ -75,7 +76,7 @@ public class MediaController : MonoBehaviour
             {
 
                 instructions.SetActive(true);
-                print("time: "+timer);
+               // print("time: "+timer);
                 if (timer > 0)
                 {
                     
@@ -92,7 +93,7 @@ public class MediaController : MonoBehaviour
             else
             {
 
-                print("videoPlaying!");
+                //print("videoPlaying!");
                 instructions.SetActive(false);
                 isStreaming = true;
                 PlayVideo(canvas);
@@ -116,8 +117,8 @@ public class MediaController : MonoBehaviour
             }
 
             long playerCurrentFrame = vidPlyr.GetComponent<VideoPlayer>().frame;
-            print("playerCurrentFram: "+ playerCurrentFrame);
-            print("playerFrameCount: " + playerFrameCount);
+           // print("playerCurrentFram: "+ playerCurrentFrame);
+           // print("playerFrameCount: " + playerFrameCount);
 
             if (Input.GetKeyDown("space") && playerCurrentFrame>pauseFrame)
             {
@@ -129,7 +130,7 @@ public class MediaController : MonoBehaviour
             else if (Input.GetKeyDown("space") && playerCurrentFrame == pauseFrame)
             {
                 pausePanel.SetActive(false);
-                print("playing");
+               // print("playing");
                 vidPlyr.Play();
             }
             /*else if (Input.GetKeyDown("r"))
@@ -173,7 +174,7 @@ public class MediaController : MonoBehaviour
         player.transform.eulerAngles = new Vector3(0, -90, 0);
 
         controller.enabled = true;
-        print("player rot:" + player.transform.rotation);
+        //print("player rot:" + player.transform.rotation);
 
     }
     void ToggleOtherUI(bool isActive)
@@ -195,7 +196,7 @@ public class MediaController : MonoBehaviour
 
         movement.enabled = true;
 
-        Task fader2_t = new Task(FadeToBlack(fadeAwaySpeed, fadeDelay+1/fadeAwaySpeed, false));
+        unfader_t = new Task(FadeToBlack(fadeAwaySpeed, fadeDelay-1/fadeAwaySpeed, false));
         isStreaming = false;
         MediaController.mediaStreaming = false;
 
@@ -273,7 +274,7 @@ public class MediaController : MonoBehaviour
         yield return new WaitForSeconds(fadeDelay);
         if (fade)
         {
-            print("fading");
+            //print("fading");
             while (objColor.a < 1)
             {
                 

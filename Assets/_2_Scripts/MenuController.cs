@@ -20,7 +20,8 @@ public class MenuController : MonoBehaviour
         switchText = false;
         player = GameObject.FindWithTag("Player");
         movement = player.GetComponent<FirstPersonController>();
-        ToggleMenu();
+        //ToggleMenu();
+        ShowInstructions();
         switchText = true;
     }
     // Update is called once per frame
@@ -38,7 +39,6 @@ public class MenuController : MonoBehaviour
         menuOn = !menuOn;
 
         movement.enabled = !menuOn;
-        Cursor.visible = menuOn;
         Menu.SetActive(menuOn);
         Instructions.SetActive(false);
         if (switchText)
@@ -56,6 +56,17 @@ public class MenuController : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
         }
         Cursor.visible = menuOn;
+    }
+
+    void ShowInstructions()
+    {
+        menuOn = true;
+
+        movement.enabled = !menuOn;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = menuOn;
+        Instructions.SetActive(true);
+
     }
     public bool isOn()
     {

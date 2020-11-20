@@ -709,6 +709,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1928755687135870266, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: msgBox
+      value: 
+      objectReference: {fileID: 1898080212}
+    - target: {fileID: 1928755687135870266, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: triggerMessage
+      value: The door is locked. It seems you have already been in here.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769293167164673415, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.50852466
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769293167164673415, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1.5503054
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769293167164673415, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.4072814
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769293167164673415, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.09165619
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769293167164673415, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.0901592
+      objectReference: {fileID: 0}
+    - target: {fileID: 3769293167164673415, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.5450784
+      objectReference: {fileID: 0}
     - target: {fileID: 6236257716948640725, guid: 69359263395dc344d846b73e27602b96,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -763,6 +803,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Credits room
+      objectReference: {fileID: 0}
+    - target: {fileID: 6236257717974039482, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: m_TagString
+      value: Credits
       objectReference: {fileID: 0}
     - target: {fileID: 6236257717974039483, guid: 69359263395dc344d846b73e27602b96,
         type: 3}
@@ -819,9 +864,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7203602850142140478, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203602850142140478, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203602850142140478, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.86
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6236257717556186615, guid: 69359263395dc344d846b73e27602b96, type: 3}
-    - {fileID: 3398093738637508158, guid: 69359263395dc344d846b73e27602b96, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 69359263395dc344d846b73e27602b96, type: 3}
 --- !u!1 &159322505
 GameObject:
@@ -3805,6 +3864,164 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &708214579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 708214580}
+  - component: {fileID: 708214582}
+  - component: {fileID: 708214581}
+  - component: {fileID: 708214583}
+  m_Layer: 0
+  m_Name: TriggerLocked
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &708214580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708214579}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0.21, y: 0.5833333, z: -0.86}
+  m_LocalScale: {x: 1.2455066, y: 1, z: 0.80288476}
+  m_Children: []
+  m_Father: {fileID: 6234368473534730463}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &708214581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708214579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6d580aad1399d6408bd8d8a06ead1d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  msgBox: {fileID: 1898080212}
+  soundEffect: {fileID: 708214583}
+  triggerMessage: The door is locked. It seems you have already visited this room.
+  messageDuration: 4
+--- !u!65 &708214582
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708214579}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6081279, y: 1.9991567, z: 1.9818532}
+  m_Center: {x: -0.4204918, y: -0.49957708, z: -0.18533775}
+--- !u!82 &708214583
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708214579}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 00f54f1dd91420b48909f1c011188ad2, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &714115921
 GameObject:
   m_ObjectHideFlags: 0
@@ -6096,6 +6313,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1225579350}
     m_Modifications:
+    - target: {fileID: 1928755687135870266, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: msgBox
+      value: 
+      objectReference: {fileID: 1898080212}
     - target: {fileID: 3398093738637508158, guid: 69359263395dc344d846b73e27602b96,
         type: 3}
       propertyPath: myDoor
@@ -6252,6 +6474,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2510ac76f21ae845a9d0433894abbff, type: 2}
+    - target: {fileID: 7203602850142140478, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8618368551287577972, guid: 69359263395dc344d846b73e27602b96,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6801,7 +7028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1140559600
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7387,7 +7614,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1220962625
 Transform:
   m_ObjectHideFlags: 0
@@ -7411,14 +7638,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1220962624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dcb2c5bf137c034081a8555877c134f, type: 3}
+  m_Script: {fileID: 11500000, guid: a6d580aad1399d6408bd8d8a06ead1d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blackoutPanel: {fileID: 251000436}
-  fadeSpeed: 0.7
-  fadeDelay: 0
-  credits: {fileID: 1840716222}
-  spawnPoint: {fileID: 0}
+  msgBox: {fileID: 1898080212}
+  soundEffect: {fileID: 0}
+  triggerMessage: You have been teleported back to the hallway.
+  messageDuration: 0
 --- !u!65 &1220962627
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7430,8 +7656,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 44.237293, y: 5.6420135, z: 5.935481}
-  m_Center: {x: -5.027281, y: -10.182571, z: 0.57650185}
+  m_Size: {x: 46.6792, y: 5.6420135, z: 6.585454}
+  m_Center: {x: -5.3058434, y: -10.182571, z: 0.63138676}
 --- !u!1001 &1223997582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8745,27 +8971,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 1a44110be72ce9e4bbf38a866d859da0, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5c5d675157a1a8c4bb3a499600b460f8, type: 3}
---- !u!1 &1368194646 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2398480264788364426, guid: 69359263395dc344d846b73e27602b96,
-    type: 3}
-  m_PrefabInstance: {fileID: 156112030}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1368194648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1368194646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6d580aad1399d6408bd8d8a06ead1d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  msgBox: {fileID: 1898080212}
-  triggerMessage: The door seems locked... Maybe explore other rooms first.
-  messageDuration: 0
 --- !u!4 &1390082604 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400008, guid: 8bc0238f058e4164f9eb9123a975cbe6,
@@ -8939,6 +9144,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747362531}
     m_Modifications:
+    - target: {fileID: 1928755687135870266, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: msgBox
+      value: 
+      objectReference: {fileID: 1898080212}
     - target: {fileID: 3398093738637508158, guid: 69359263395dc344d846b73e27602b96,
         type: 3}
       propertyPath: myDoor
@@ -9204,6 +9414,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: doorWing_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203602850142140478, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9109977001624179254, guid: 69359263395dc344d846b73e27602b96,
         type: 3}
@@ -13647,6 +13862,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 747362531}
     m_Modifications:
+    - target: {fileID: 1928755687135870266, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: msgBox
+      value: 
+      objectReference: {fileID: 1898080212}
     - target: {fileID: 3398093738637508158, guid: 69359263395dc344d846b73e27602b96,
         type: 3}
       propertyPath: myDoor
@@ -13782,6 +14002,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: doorWing_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203602850142140478, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69359263395dc344d846b73e27602b96, type: 3}
@@ -14310,6 +14535,7 @@ Transform:
   - {fileID: 6234287510688258065}
   - {fileID: 9109977001528247223}
   - {fileID: 802182894}
+  - {fileID: 708214580}
   m_Father: {fileID: 6236257717887511098}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
@@ -14543,6 +14769,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1225579350}
     m_Modifications:
+    - target: {fileID: 1928755687135870266, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: msgBox
+      value: 
+      objectReference: {fileID: 1898080212}
     - target: {fileID: 3398093738637508158, guid: 69359263395dc344d846b73e27602b96,
         type: 3}
       propertyPath: myDoor
@@ -14719,6 +14950,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e2510ac76f21ae845a9d0433894abbff, type: 2}
+    - target: {fileID: 7203602850142140478, guid: 69359263395dc344d846b73e27602b96,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8618368551287577972, guid: 69359263395dc344d846b73e27602b96,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -15262,7 +15498,7 @@ GameObject:
   - component: {fileID: 6236257717887511098}
   m_Layer: 0
   m_Name: 5_Bedroom
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

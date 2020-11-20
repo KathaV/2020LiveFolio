@@ -10,6 +10,7 @@ public class TriggerDoorController : MonoBehaviour
     [SerializeField] private string isOpen = "isOpen";
    
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag =="Player")
