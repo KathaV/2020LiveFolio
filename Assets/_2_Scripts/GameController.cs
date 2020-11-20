@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public GameObject msgPrompter;
     private GameObject credits;
     private bool roomsDone;
+    private bool resetState;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,6 +17,7 @@ public class GameController : MonoBehaviour
         mainMenu = GameObject.FindWithTag("Menu");
         credits = GameObject.FindWithTag("Credits");
         roomsDone = false;
+        resetState = true;
         foreach (GameObject room in rooms)
         {
             LockRoom(room, false);
@@ -28,25 +30,38 @@ public class GameController : MonoBehaviour
     void Update()
     {
         //remove instructions for all media once it has been played once.
-
-        roomsDone = true;
-        foreach (GameObject room in rooms)
+        if (!roomsDone)
         {
-            MediaController media = room.GetComponentInChildren<MediaController>();
-            if (!media.hasBeenPlayed())
+            roomsDone = true;
+            foreach (GameObject room in rooms)
             {
-                roomsDone = false;
-            }
-            else if (!isLocked(room))
-            {
-               
-                LockRoom(room, true);
-            }
+                MediaController media = room.GetComponentInChildren<MediaController>();
+                if (!media.hasBeenPlayed())
+                {
+                    roomsDone = false;
+                    resetState = false;
+                }
+                else if (!isLocked(room))
+                {
 
+                    LockRoom(room, true);
+                }
+
+            }
         }
+       
         if (roomsDone && isLocked(credits))
         {
             LockRoom(credits, false);
+        }
+        if (!isLocked(credits))
+        {
+            GameObject creditsTrigger = credits.gameObject.transform.Find("CreditsTrigger").gameObject;
+            if (creditsTrigger.GetComponent<CreditsRoller>().creditsPlayed() && roomsDone)
+            {
+                resetState = true;
+                ResetState();
+            }
         }
 
 
@@ -68,6 +83,16 @@ public class GameController : MonoBehaviour
             print("streaming: " + MediaController.mediaStreaming);
 
         }*/
+    }
+
+    void ResetState()
+    {
+        foreach (GameObject room in rooms)
+        {
+            LockRoom(room, false);
+            
+        }
+        roomsDone = false;
     }
 
     void LockRoom(GameObject room, bool isLocked)

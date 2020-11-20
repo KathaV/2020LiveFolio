@@ -29,18 +29,17 @@ public class Tutorial : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print("count" + messages.Count + " curr: " + curr);
+        //print("count" + messages.Count + " curr: " + curr);
         if (isPlaying&& !isActive)
         {
-
-            msgBox.SetActive(false);
-            print("not active");
+           msgBox.SetActive(false);
+           // print("not active");
         }
             
 
         if (isPlaying && messages.Count > 0 && curr < messages.Count)
         {
-            print("setting boxes...");
+           // print("setting boxes...");
             msgBox.SetActive(true);
             msgPrompt.SetActive(true);
             isActive = true;
@@ -53,8 +52,6 @@ public class Tutorial : MonoBehaviour
                 curr++;
                 if (curr >= messages.Count)
                 {
-                    print("curr" + curr);
-                    print("removing boxes");
                     msgBox.SetActive(false);
                     msgPrompt.SetActive(false);
                     isActive = false;

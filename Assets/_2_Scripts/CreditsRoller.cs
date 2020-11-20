@@ -15,47 +15,42 @@ public class CreditsRoller : MonoBehaviour
     private bool creditsHasPlayed;
     private GameObject player;
     public GameObject spawnPoint;
+    private bool creditsPlaying;
     
     // Start is called before the first frame update
     void Start()
     {
         animators = GameObject.FindGameObjectsWithTag("Animator");
         creditsHasPlayed = false;
+        creditsPlaying = false;
         player = GameObject.FindWithTag("Player");
     }
+
+
 
 
     // Update is called once per frame
     void OnTriggerEnter(Collider other)
     {
 
-        bool playCredits = true;
         MediaController media;
         if (other.gameObject.tag =="Player") {
             
-            foreach (GameObject animator in animators)
-            {
-                media = animator.GetComponent<MediaController>();
-                if (media.hasBeenPlayed() != true)
-                {
-                    playCredits = false;
-                    break;
-                }
-            }
-            print("play credits:" + playCredits);
-            if (playCredits)
-            {
-                
-                fader_t = new Task(FadeToBlack(fadeSpeed, fadeDelay));
-            }
+            
+          
+
+            creditsPlaying = true;
+            fader_t = new Task(FadeToBlack(fadeSpeed, fadeDelay));
+            
 
         }
         
     }
 
+    
     void Update()
     {
-        if (fader_t!=null && !fader_t.Running && !creditsHasPlayed)
+        if (creditsPlaying && fader_t!=null && !fader_t.Running)
         {
             credits.SetActive(true);
             
@@ -74,14 +69,16 @@ public class CreditsRoller : MonoBehaviour
         //respawn
         CharacterController controller = player.GetComponent<CharacterController>();
         
-        controller.enabled = false;
+        controller.enabled = false; 
         player.transform.position = spawnPoint.transform.position;
         player.transform.eulerAngles = new Vector3(0, -90, 0);
         controller.enabled = true;
         print("player rot:" + player.transform.rotation);
 
-
+        credits.SetActive(false);
+        creditsPlaying = false;
         new Task(FadeToBlack(fadeSpeed, fadeDelay, false));
+
         
 
     }
@@ -110,6 +107,10 @@ public class CreditsRoller : MonoBehaviour
                 yield return null;
             }
         }
+    }
+    public bool creditsPlayed()
+    {
+        return creditsHasPlayed;
     }
 
     

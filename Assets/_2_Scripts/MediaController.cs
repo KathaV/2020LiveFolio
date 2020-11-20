@@ -45,7 +45,7 @@ public class MediaController : MonoBehaviour
         justEntered = false;
         canvas = GameObject.FindWithTag("UI");
         player = GameObject.FindWithTag("Player");
-        print("Player:" + player.name);
+        //print("Player:" + player.name);
         pausePanel = canvas.transform.Find("Pause Panel").gameObject;
         restartPanel = canvas.transform.Find("Restart Panel").gameObject;
         instructions.SetActive(false);
